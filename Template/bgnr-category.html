@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category | Beginner</title>
+    <link rel="icon" type="image/x-icon" href="../static/ELEMENTS/beginner.png">
+    <link rel ="stylesheet" href = "{{ url_for('static', filename='css/beginner-category.css')}} ">
+</head>
+<body>
+    <nav class="fill">
+        <ul>
+           <div class="logo-container">
+            <li><img src="../static/comsigns-logo.png" alt="ComSigns" style="margin-left: 60px; margin-right: 10px;"></li>
+            <span class="logo-name"> 
+                <span class="logo-text logo-text-blue">COM</span> 
+                <span class="logo-text logo-text-green">SIGNS</span>
+                </span>
+            </div>
+          <li><a href="/">Home</a></li>
+          <li><a href="/detector" target="blank_">Sign Language Detector</a></li>
+          <div class="dropdown">
+            <button class="dropbtn">COURSES
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a id="color-b" href="/beginner">Beginner</a>
+              <a id="color-i" href="/intermediate">Intermediate</a>
+              <a id="color-a" href="/advanced">Advanced</a>
+            </div>
+          </div>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+      </nav>
+      <br><br><br>
+      <h id="header">Select a category...</h>
+
+
+      <div id="lesson1">
+        <img src="../static/icon-category/BL1 Alphabets.png" width="100px" height="100px">
+        <a href="/a">
+        <p><b>Lesson 1:</b> Alphabets</p>
+      </a>
+      </div>
+
+      <div id="lesson2">
+        <img src="../static/icon-category/BL2Numbers.png" width="100px" height="100px">
+        <a href="/1">
+        <p><b>Lesson 2:</b> Numbers</p>
+      </a>
+      </div>
+
+
+      <div id="lesson3">
+        <img src="../static/icon-category/BL3 BasicPhrases.png" width="100px" height="100px">
+        <a href="/bp1">
+        <p><b>Lesson 3:</b> Basic Phrases</p>
+      </a>
+      </div>
+
+
+    
+</body>
+</html>

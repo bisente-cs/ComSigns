@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ComSigns | Detector, Txt2ASL & Txt2Speech</title>
+    <link rel="icon" type="image/x-icon" href="../static/comsigns-logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detector.css')}} ">
+  </head>
+
+  <body>
+    <nav class="fill">
+      <ul>
+         <div class="logo-container">
+          <li><img src="{{ url_for('static', filename='comsigns-logo.png')}} " alt="ComSigns" style="margin-left: 60px; margin-right: 10px;"></li>
+          <span class="logo-name"> 
+              <span class="logo-text logo-text-blue">COM</span> 
+              <span class="logo-text logo-text-green">SIGNS</span>
+              </span>
+          </div>
+        <li><a href="/">Home</a></li>
+        <li><a href=""><b>Sign Language Detector</a></b></li>
+        <div class="dropdown">
+          <button class="dropbtn">COURSES
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a id="color-b" href="/beginner">Beginner</a>
+            <a id="color-i" href="/intermediate">Intermediate</a>
+            <a id="color-a" href="/advanced">Advanced</a>
+          </div>
+        </div>
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/contactus">Contact Us</a></li>
+      </ul>
+    </nav>
+  
+      <div class="container1">
+        <div class="a" id="intro">
+          <img src="{{ url_for('static', filename='/ELEMENTS/hello.gif')}}" width="75.5%" height="65%">
+        </div>
+        <div class="b" id = "webcam">
+        <img id="videoFeed" src="" width="95%" height="65%">
+        </div>
+
+
+        <div id ="button">
+          <span class="logo-name">
+            <span id="text-intro" class="logo-text logo-text-blue">COM</span> 
+            <span id="text-intro2" class="logo-text logo-text-green">SIGNS</span>
+            </span>
+          <button id="toggle-cam" onclick="openReminder()">Translate</button>
+
+          <script>
+              // Flag to check if the reminder has been shown
+  let reminderShown = false;
+
+  function openReminder() {
+    if (!reminderShown) {
+      // Show the modal if the reminder hasn't been shown yet
+      document.getElementById('reminderModal').style.display = 'block';
+    } else {
+      // Proceed with translation directly if the reminder has already been shown
+      myFunction();
+    }
+  }
+
+  function closeReminder() {
+    document.getElementById('reminderModal').style.display = 'none';
+  }
+
+  function proceedWithTranslation() {
+    closeReminder();
+    reminderShown = true;  // Set flag to true after proceeding
+    myFunction();  // Proceed with the actual translation function
+  }
+          function myFunction() {
+            var x = document.getElementById("webcam");
+            var y = document.getElementById("intro");
+            var output = document.getElementById('gesture_output')
+            var sentence = document.getElementById('predictedList')
+            var clearbtn = document.getElementById("clearButton")
+            var info = document.getElementById('cam2asl')
+            var btnasl = document.getElementById('toggle-txt2asl')
+            var txtform = document.getElementById('interpreter')
+            var translateform = document.getElementById('container2')
+            var gttsform = document.getElementById('container2a')
+            var removeBtn = document.getElementById('removeBtn')
+            var reminderModal = document.getElementById('reminderModal')
+            let text = document.getElementById('toggle-cam')
+            const videoFeed = document.getElementById('videoFeed');
+            
+            
+            if (x.style.display === "block") {
+              x.style.display = "none";
+              output.style.display = "none";
+              sentence.style.display = "none";
+              sentence.style.visibility = "hidden";
+              videoFeed.src = '';
+              clearbtn.style.display = "none";
+              y.style.display = "block";
+              info.style.display = "none";
+              btnasl.disabled = false;
+              txtform.disabled = false;
+              btnasl.style.opacity = "1";
+              txtform.innerText = "";
+              text.innerHTML = 'Translate';
+              text.style.position = 'fixed';
+              text.style.left = '17rem';
+              translateform.style.display = 'none';
+              gttsform.style.display = 'block';
+            } else {
+              x.style.display = "block";
+              output.style.display = "block";
+              sentence.style.display = "block";
+              sentence.style.visibility = "visible";
+              videoFeed.src = '{{ url_for("video_feed") }}';
+              clearbtn.style.display = "block";
+              removeBtn.style.display = "block";
+              y.style.display = "none";
+              info.style.display = "block";
+              btnasl.style.opacity = "0.5";
+              btnasl.disabled = true;
+              txtform.disabled = true;
+              txtform.innerText = "Text to American Sign Language functionality is currently disabled because the sign language detector is active. To enable Text to ASL translation, please click 'Disable Camera' to deactivate the detector and proceed.";
+              text.innerHTML = 'Disable Camera';
+              text.style.position = 'fixed';
+              text.style.left = '16rem';
+              translateform.style.display = 'block';
+              gttsform.style.display = 'none';
+              reminderModal.style.display = 'none'
+            }
+          }
+          
+          </script>
+        </div>   
+      </div>
+
+        <!-- Reminder Modal -->
+  <div id="reminderModal" class="modal">
+    <div id="mod-container" class="modal-content">
+      <h2>Reminder:</h2>
+      <p id="mod-con" >By activating the translation, the camera will begin recording for American Sign Language (ASL) detection. For the best results, please perform your signs slowly and deliberately to ensure higher accuracy in recognizing the words. Before proceeding, ensure that your environment is free from background distractions or movements, as they may interfere with the detection process and lead to unintended interpretations. Additionally, it is important to use a high-quality web camera to enhance the clarity of the video, as clearer images will improve the system's ability to detect and interpret your signs correctly. Please take a moment to prepare yourself and your surroundings before starting.</p>
+      <button id="proceed-modal" onclick="proceedWithTranslation()">Proceed</button>
+      <button id="close-modal" onclick="closeReminder()">Cancel</button>
+    </div>
+  </div>
+  
+  <style>
+    #mod-con{
+      font-family:  Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      width: 100%;
+      text-align: justify;
+    }
+
+    #mod-container  {
+      position: fixed;
+      top: 1px;
+      left: 3.5rem;
+      height: 280px;
+      width: 90%;
+    }
+
+    #proceed-modal {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      padding-left: 2rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      padding-right: 2rem;
+      padding: 10px 20px;   /* Add some padding for a better appearance */
+      font-size: 16px;      /* Set the font size */
+      background-color: rgb(109, 109, 109); /* Button background color */
+      color: white;         /* Text color */
+      border: none;         /* No border */
+      border-radius: 5px;   /* Rounded corners */
+      cursor: pointer;      /* Pointer cursor on hover */
+      transition: background-color 0.3s; /* Smooth transition for background color */
+      transition: all 1s;
+    }
+  
+    #proceed-modal:hover {
+      background-color: var(--secondary);
+      color: #000000;
+      transition: 0.3s;
+    }
+
+    #close-modal {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      padding-left: 2rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      padding-right: 2rem;
+      padding: 10px 20px;   /* Add some padding for a better appearance */
+      font-size: 16px;      /* Set the font size */
+      background-color: rgb(109, 109, 109); /* Button background color */
+      color: white;         /* Text color */
+      border: none;         /* No border */
+      border-radius: 5px;   /* Rounded corners */
+      cursor: pointer;      /* Pointer cursor on hover */
+      transition: background-color 0.3s; /* Smooth transition for background color */
+      transition: all 1s;
+    }
+  
+    #close-modal:hover {
+      background-color: var(--secondary);
+      color: #000000;
+      transition: 0.3s;
+    }
+  </style>
+      
+  <div id="container2">
+    <p id="text2asl">Translated:</p>
+    <p id="cam2asl">Translating....</p>
+    <div id="preview-text">
+        <!--PREVIEW TEXT YOU INPUTTED IN TEXT2ASL-->
+    </div>
+    <ul id="predictedList">
+        <!-- Predicted characters will be appended here -->
+    </ul>
+    <div id='gesture_output'>
+        <!--ALL TEXT WILL BE TRANSLATED HERE-->
+    </div>
+    
+    <div id="repeatCheckBox">
+        <input type="checkbox" id="repeatCheckbox">
+        <label for="repeatCheckbox">Enable Repetitive Words | </label>
+    </div>
+
+    <div id="fingerspellType">
+        <input type="checkbox" id="fingerspellCheckbox">
+        <label for="fingerspellCheckbox">Fingerspell Mode</label>
+    </div>
+
+    <button id="clearButton" onclick="clearPredictedList()">Clear</button>
+    <button id="removeBtn" onclick="removeWord()">Delete Last Word</button>
+</div>
+
+<script>
+  let intervalId;
+  let lastPredictedCharacter = null; // Keep track of the last predicted character
+  let debounceTimer;
+  let noneTimeout; // Timeout for when "None" is detected
+
+  // Function to fetch the predicted character from the server
+  function fetchPredictedCharacter() {
+      fetch('/get_predicted_character')
+          .then(response => response.json())
+          .then(data => {
+              const predictedCharacter = data.predicted_character;
+
+              // If "None" is detected, set a timeout to stop fetching after 5 seconds
+              if (predictedCharacter && predictedCharacter.toLowerCase() === "none") {
+                  // Display "None" and start the 5-second timeout
+                  document.getElementById('gesture_output').textContent = 'Word: None';
+                  clearTimeout(noneTimeout); // Clear any previous timeout
+                  noneTimeout = setTimeout(() => {
+                      clearInterval(intervalId);
+                      console.log('No hands detected for 5 seconds, stopping the interval.');
+                  }, 5000);
+                  return; // Exit early since there's nothing more to process
+              }
+
+              // Avoid processing if the same character is detected consecutively
+              if (predictedCharacter === lastPredictedCharacter) {
+                  return;
+              }
+
+              // Clear the "None" timeout if a valid character is detected
+              clearTimeout(noneTimeout);
+
+              // Update the last predicted character
+              lastPredictedCharacter = predictedCharacter;
+
+              // Display the predicted character
+              const outputSentence = `Word: ${predictedCharacter}`;
+              document.getElementById('gesture_output').textContent = outputSentence;
+
+              // Get the state of the checkboxes
+              const allowRepetition = document.getElementById('repeatCheckbox').checked;
+              const fingerspellEnabled = document.getElementById('fingerspellCheckbox').checked;
+
+              // If fingerspell is checked, only allow A-Z characters
+              if (fingerspellEnabled && predictedCharacter && !/^[A-Z]$/.test(predictedCharacter)) {
+                  console.log('Fingerspell mode is enabled, skipping non-A-Z character prediction.');
+                  return; // Exit if a non-A-Z character is detected while fingerspell is enabled
+              }
+
+              // If fingerspell is unchecked, prevent appending letters
+              if (!fingerspellEnabled && predictedCharacter && /^[A-Z]$/.test(predictedCharacter)) {
+                  console.log('Fingerspell mode is disabled, skipping letter prediction.');
+                  return; // Exit if fingerspell mode is off and a letter is predicted
+              }
+
+              // Append to the predicted characters list if valid
+              if (predictedCharacter && predictedCharacter !== "no hands detected") {
+                  if (allowRepetition || !document.getElementById(`gesture-${predictedCharacter}`)) {
+                      const li = document.createElement('li');
+                      li.id = `gesture-${predictedCharacter}`; // Set ID to avoid duplicates if repetition is not allowed
+                      li.textContent = predictedCharacter;
+                      document.getElementById('predictedList').appendChild(li);
+
+                      // Limit the list to 15 items
+                      const listItems = document.getElementById('predictedList').getElementsByTagName('li');
+                      if (listItems.length > 15) {
+                          document.getElementById('predictedList').removeChild(listItems[0]); // Remove the oldest item
+                      }
+                  }
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching predicted character:', error);
+          });
+  }
+
+  // Debounce the fetch function to limit the number of requests
+  function startFetching() {
+      clearInterval(intervalId);
+      clearTimeout(noneTimeout); // Clear any active "None" timeout
+      
+      // Set interval based on fingerspell type checkbox
+      const fingerspellEnabled = document.getElementById('fingerspellCheckbox').checked;
+      const fetchInterval = fingerspellEnabled ? 1500 : 4000; // 1500ms if checked, otherwise 4000ms
+      
+      intervalId = setInterval(() => {
+          clearTimeout(debounceTimer); // Clear previous timer
+          debounceTimer = setTimeout(fetchPredictedCharacter, 10); // Set a new timer
+      }, fetchInterval); // Use the dynamically set interval
+  }
+
+  // Event listener for the fingerspell checkbox to restart fetching with the new interval
+  document.getElementById('fingerspellCheckbox').addEventListener('change', startFetching);
+
+  // Start fetching predictions
+  startFetching();
+
+  // Clear the predicted characters list
+  function clearPredictedList() {
+      document.getElementById('predictedList').innerHTML = ''; // Clear the list
+  }
+
+  // Clear only the last word from the predicted characters list
+  function removeWord() {
+      const predictedList = document.getElementById('predictedList');
+      const lastItem = predictedList.lastElementChild;  // Select the last list item
+      if (lastItem) {
+          predictedList.removeChild(lastItem);  // Remove only the last item
+      }
+  }
+</script>
+
+
+
+  <div id="container2a">
+    
+    <textarea id="inputText" placeholder="Enter text to convert to speech"></textarea>
+    <button onclick="convertToSpeech()">Convert to Speech</button>
+    <br />
+    <audio controls id="audioPlayer" style="display: none;"></audio>
+    <script src="{{ url_for('static', filename='js/txt2speech.js') }}"></script>
+  </div>
+
+
+
+  <div class="container3">
+          <textarea id="interpreter" name="text" placeholder="Type to translate into ASL..."></textarea>
+          <button id="toggle-txt2asl" onclick="showVideo()">Convert to ASL</button>
+          <button id="cancel-asl" onclick="refreshPage()">Reload</button>
+  </div>
+
+   <!-- The Modal -->
+ <div id="errortxt2asl" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="titleerror">⚠️ ERROR: INPUT REQUIRED ⚠️</h2>
+      <p id="errmess-txt2asl">Please correct the following issues:
+      <br><br>Please enter text in the field below, use American Sign Language (ASL) word or sentence to translate.
+      <br><br><i> <b>Note:</b> Ensure your ASL input is properly recognized by our system.</i>
+    </p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/videoList.js') }}"></script>
+
+  </body>
+  </html>

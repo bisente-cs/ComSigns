@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced | Greetings</title>
+<link rel="icon" type="image/x-icon" href="../static/ELEMENTS/advanced.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../static/css/advanced-content.css">
+</head>
+<body>
+  <nav class="fill">
+    <ul>
+       <div class="logo-container">
+        <li><img src="../static/comsigns-logo.png" alt="ComSigns" style="margin-left: 60px; margin-right: 10px;"></li>
+        <span class="logo-name"> 
+            <span class="logo-text logo-text-blue">COM</span> 
+            <span class="logo-text logo-text-green">SIGNS</span>
+            </span>
+        </div>
+      <li><a href="/">Home</a></li>
+      <li><a href="/detector" target="blank_">Sign Language Detector</a></li>
+      <div class="dropdown">
+        <button class="dropbtn"><b>COURSES</b>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/beginner">Beginner</a>
+          <a href="/intermediate">Intermediate</a>
+          <a href="/advanced">Advanced</a>
+        </div>
+      </div>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+    </ul>
+  </nav>
+  <img id="label-nav" src="../static/ELEMENTS/advanced.gif">
+  <br><BR><BR>
+
+<!---CONTENT-->
+<div id="image-container">
+  <video id="myVideo" width="500px" height="400px" controls muted>
+  <source src="../static/advanced-basic-sentences/Please wait.mov">
+  Your browser does not support the video tag.
+</video>
+<audio id="myAudio">
+  <source src="../static/advanced-basic-sentences/Please wait.m4a" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  const video = document.getElementById("myVideo");
+  const audio = document.getElementById("myAudio");
+
+  // Play both video and audio together
+  video.onplay = function() {
+    audio.play();
+  };
+
+  // Pause both video and audio together
+  video.onpause = function() {
+    audio.pause();
+  };
+
+  // Sync audio with video time
+  video.ontimeupdate = function() {
+    audio.currentTime = video.currentTime;
+  };
+</script>
+</div>
+
+<main>
+    <section class="lesson">
+      <i><h2 id="header1">How to say:</h2></i> 
+    <h1 id="header2">Please wait</h1>
+    </section>
+</main>
+
+
+<p style="font-family: Arial; font-size: 20px; color: black;" class="p"> 
+<section id="color-content" class="main-content">
+   <p id="content-p" style="color:#000000; font-size: 15px; font-family: Verdana, Geneva, Tahoma, sans-serif; margin-left: 50px;"> 
+    Circle flat hand on chest, wiggle fingers of both hands with palms up.
+    <br><br>
+
+</section>
+
+<button id="finishButton" class="button" onclick="finished()"><span>Continue</span></button>
+        <span id="trademark" class="logo-name"> 
+          <span class="logo-text logo-text-blue">COM</span> 
+          <span class="logo-text logo-text-green">SIGNS</span>
+          </span>
+
+        <a href="/">
+        <button id="proceed">Okay</button></a>
+
+            <!-- Placeholder for confetti -->
+            <div id="confetti-container"></div>
+            
+        <style>
+          /* Add this style for the transition */
+          #color-content {
+            transition: background-color 0.5s ease; /* smooth 0.5 second transition */
+          }
+          #finishButton {
+            transition: 1s ease;
+          }
+          #content-p {
+            transition: 3s ease;
+          }
+          #image-container {
+            transition: 10s ease;
+          }
+          #myVideo {
+            transition: 10s ease;
+          }
+
+          #proceed {
+            border-radius: 4px;
+            background-color: yellow;
+            border: none;
+            color: #000000;
+            text-align: center;
+            font-size: 15px;
+            padding: 10px;
+            width: 100px;
+            transition: all 5s ease-in;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 18px;
+            margin-left: 50px;
+            position: fixed;
+            display: none;
+            top: 90%;
+            left: 1%;
+            animation: fadeIn 3s;
+            }
+
+          #proceed:hover {
+            background-color: rgb(187, 187, 52);
+            transition: all 3s;
+          }
+
+          #header1 {
+            transition: 2s ease;
+          }
+
+          #header2 {
+            transition:2s ease;
+          }
+
+          #trademark {
+            display: none;
+            transition-delay: 4s;
+            transition: 3s ease;
+            animation: fadeIn 4s;
+          }
+
+          #label-nav2 {
+            width: 115px;
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 70rem
+          }
+
+          @keyframes fadeIn {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+        /* Confetti styles */
+        .confetti {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: red;
+          opacity: 0;
+          border-radius: 50%; /* Default shape is round, some confetti will be circular */
+          animation: popper 2s ease forwards;
+        }
+
+        /* Different colors and random variations */
+        .confetti:nth-child(2) { background-color: blue; }
+        .confetti:nth-child(3) { background-color: yellow; width: 15px; height: 15px; border-radius: 0; }
+        .confetti:nth-child(4) { background-color: green; width: 12px; height: 12px; }
+        .confetti:nth-child(5) { background-color: purple; width: 20px; height: 5px; }
+        .confetti:nth-child(6) { background-color: orange; width: 8px; height: 8px; border-radius: 50%; }
+        .confetti:nth-child(7) { background-color: pink; width: 10px; height: 20px; }
+
+        /* Confetti animation */
+        @keyframes popper {
+          0% {
+            transform: translateY(0) translateX(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-200px) translateX(calc(50vw - 50px)) rotate(720deg);
+            opacity: 0;
+          }
+        }
+
+        /* Confetti with different fall trajectories */
+        .confetti:nth-child(odd) {
+          animation: popper-left 2.5s ease forwards;
+        }
+
+        @keyframes popper-left {
+          0% {
+            transform: translateY(0) translateX(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(200px) translateX(-100px) rotate(-360deg);
+            opacity: 0;
+          }
+        }
+        </style>
+
+        <script>
+            function finished() {
+              var maincontent = document.getElementById("color-content");
+              var finishBtn = document.getElementById("finishButton");
+              var content = document.getElementById("content-p");
+              var container = document.getElementById("image-container");
+              var video = document.getElementById("myVideo");
+              var proceed = document.getElementById("proceed");
+              var mainhead = document.getElementById("header2");
+              var removeHead = document.getElementById("header1");
+              var name = document.getElementById("trademark");
+
+              maincontent.style.backgroundColor = "#F7E2D6";
+              maincontent.style.marginTop = "7rem";
+              finishBtn.style.position = "fixed";
+              finishBtn.style.top = "500rem";
+              content.style.color = "black";
+              container.style.top = "400rem";
+              container.style.borderColor = "#F7E2D6";
+
+              video.style.top = "400rem";
+              content.innerHTML = "Great! You can now proceed to our Homepage!";
+              proceed.style.position = "fixed";
+              proceed.style.display = "block"
+              proceed.style.left = "37rem";
+              content.style.top = "15rem";
+              content.style.fontSize = "35px";
+              content.style.width = "100%"
+              content.style.left = "15.3rem";
+              removeHead.style.position = "fixed";
+              removeHead.style.left = "400rem";
+              mainhead.style.position = "fixed";
+              mainhead.style.left = "17rem";
+              mainhead.style.top = "7rem";
+              mainhead.style.fontSize = "80px";
+              mainhead.innerHTML = "Congratulations!";
+              name.style.display = "block";
+              name.style.position = "fixed";
+              name.style.top = "20rem";
+              name.style.left = "29rem";
+              name.style.fontSize = "80px";
+              proceed.style.top = "29rem";
+              
+            // Add party poppers (confetti)
+            createConfetti();
+            }
+
+
+            function createConfetti() {
+              var container = document.getElementById('confetti-container');
+              container.innerHTML = ''; // Clear previous confetti
+              
+              for (var i = 0; i < 100; i++) { // Create 100 pieces of confetti
+                var confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.top = Math.random() * 100 + '%';  // Random vertical position
+                confetti.style.left = Math.random() * 100 + '%'; // Random horizontal position
+                container.appendChild(confetti);
+      
+                // Remove confetti after animation completes
+                setTimeout(function() {
+                  confetti.remove();
+                }, 2500); // Wait for the animation to finish before removing
+              }
+            }
+          </script>
+</body>
+</html>

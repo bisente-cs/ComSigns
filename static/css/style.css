@@ -1,0 +1,588 @@
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+} 
+
+
+/* Center the loader */
+#loader {
+  position: fixed;
+  left: 100%;
+  top: 100%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  margin-left: 38rem;
+  margin-top: 12rem;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid var(--fourth);
+  border-right: 16px solid #9DD6DF;
+  border-bottom: 16px solid #8E7AB5;
+  border-left: 16px solid #5EB090;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#main-body {
+  display: none;
+  text-align: center;
+}
+
+/*interface-section*/
+body {
+  background-color: #F7E2D6;
+  --maincolor: #8CB9BD;
+  --secondary: #FEFBF6;
+  --tertiary: #ECB159;
+  --fourth: #B67352;
+  max-height: 100%;
+  position: fixed;
+  animation: fadeInUp ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  margin-left: 10px; /* Adjust margin as needed */
+  margin-right: 70px;
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold;
+  font-family: 'quicksand', sans-serif;
+}
+
+.logo-text {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.logo-text-blue {
+  color: #1B548D; /* Blue color for "Logo" */
+}
+
+.logo-text-green {
+  color: #5EB090; /* Green color for "Name" */
+}
+
+
+
+nav {
+background: rgb(255, 255, 255);
+box-shadow: rgba(120, 126, 133, 0.2) 0px 8px 24px;
+padding: 9.7em;
+padding-bottom: 0.3em;
+padding-top: 0.3em;
+margin-bottom: 1rem;
+}
+
+nav ul {
+display: flex;
+list-style: none;
+text-align: center;
+margin-top: 1px;
+padding-left: 0px;
+margin-bottom: 0px;
+}
+
+nav ul li {
+display: inline-block;
+}
+
+nav ul li a {
+display: block;
+padding: 10px;
+padding-top: 14.5px;
+padding-bottom: 10px;
+text-decoration: none;
+color: rgb(0, 0, 0);
+font-weight: normal;
+text-transform: uppercase;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+margin: 0 10px;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+transition: all .3s;
+}
+
+nav ul li a:hover {
+color: #555;
+}
+
+nav.stroke ul li a,
+nav.fill ul li a {
+position: relative;
+}
+
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+width: 0%;
+content: '.';
+color: transparent;
+background: rgb(255, 255, 255);
+height: 1px;
+}
+
+nav.fill ul li a {
+transition: all 2s;
+}
+
+nav.fill ul li a:after {
+text-align: left;
+content: '.';
+margin: 0;
+opacity: 0;
+}
+
+nav.fill ul li a:hover {
+color: rgb(0, 0, 0);
+z-index: 1;
+}
+
+nav.fill ul li a:hover:after {
+z-index: -10;
+animation: fill 0.1s forwards;
+-webkit-animation: fill 0.1s forwards;
+-moz-animation: fill 0.1s forwards;
+opacity: 1;
+}
+
+.fill img {
+width: 50px;
+image-rendering: -moz-crisp-edges;
+/* Firefox */
+image-rendering: -o-crisp-edges;
+/* Opera */
+image-rendering: -webkit-optimize-contrast;
+/* Webkit (non-standard naming) */
+image-rendering: crisp-edges;
+-ms-interpolation-mode: nearest-neighbor;
+text-align: center;
+}
+
+nav a:hover {
+background-color: #ddd;
+color: black;
+}
+
+.dropdown {
+float: left;
+overflow: hidden;
+}
+
+.dropbtn button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.dropdown .dropbtn {
+font-size: 16px;  
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+border: none;
+outline: none;
+color: rgb(0, 0, 0);
+padding: 14px 20px;
+background-color: inherit;
+margin: 0;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #333;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+min-width: 160px;
+z-index: 1;
+
+}
+
+.dropdown-content a {
+float: none;
+color: white;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+
+#color-b {
+  background-color: var(--fourth);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;  
+  text-align: center;
+}
+
+#color-b:hover {
+  background-color: #DFBB9D;
+  transition: all 1s;
+}
+
+#color-i {
+  background-color: var(--maincolor);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;  
+  text-align: center;
+}
+
+#color-i:hover {
+  background-color: #9DD6DF;
+  transition: all 1s;
+}
+
+#color-a {
+  background-color: #8E7AB5;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;  
+  text-align: center;
+}
+
+#color-a:hover {
+  background-color: #b8a2e4;
+  transition: all 1s;
+}
+
+
+.dropdown-content a:hover {
+background-color: #ddd;
+color: black;
+}
+
+
+.dropdown:hover .dropdown-content {
+display: block;
+position: fixed;
+left: 49.5rem;
+}
+
+/*-----------------------------END OF NAV BAR------------------------------------*/
+
+.logo {
+width: 90px;
+height: 90px;
+position: absolute;
+top: 0;
+left: 0;
+}
+ /*Hide Scrollbar*/
+
+ body::-webkit-scrollbar {
+  width: 0em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000; /* You can set the color you want */
+  outline: 1px solid slategrey;
+}
+
+body {
+    overflow-y: auto; /* Hide scrollbar for the container */
+}
+
+  /*End of Hide Scrollbar*/
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  margin-left: 10px; /* Adjust margin as needed */
+  margin-right: 70px;
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold;
+  font-family: 'quicksand', sans-serif;
+}
+
+.logo-text {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.logo-text-blue {
+  color: #1B548D; /* Blue color for "Logo" */
+}
+
+.logo-text-green {
+  color: #5EB090; /* Green color for "Name" */
+}
+
+.content-main {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+  display: flex;
+}
+
+.container-secondary {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  padding: 1;
+  overflow: hidden;
+}
+
+.container-secondary img {
+  margin-left: 300px;
+  margin-right: 5px;
+}
+
+
+.content {
+  width: 100%;
+  height: 100%;
+  overflow: y 100px; /* Enable vertical scrollbar for the content */
+  padding-right: 10px; /* Adjust for the scrollbar width */
+  box-sizing: content-box;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0em;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #000; /* You can set the color you want */
+  outline: 1px solid slategrey;
+}
+
+.scroll-container {
+  width: 55vw;
+    height: 88vh;
+    overflow-y: auto; /* Hide scrollbar for the container */
+}
+
+.box1{
+  background-color: var(--maincolor);
+  border: #3d3d3d 1px solid;
+  border-radius: 15px;
+  height: 80%;
+  width: 36%;
+  position: fixed;
+  left: 53rem;
+  top: 6rem;
+  animation: fadeInUp ease 2s;
+  animation-iteration-count: 1;
+}
+
+.slider-holder {
+  width: 400px;
+  height: 300px;
+  margin-left: 30px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.image-holder img {
+  position: fixed;
+  top: 6.8rem;
+  left: 35.4rem;
+  width: 445px;
+  height: 290px;
+  transition:ease-in 4s;
+}
+
+.slider {
+  position: fixed;
+  border-radius: 3px;
+  animation: fadeinout 8.5s;
+}
+
+
+.box1-inner{
+  background-color:#3d3d3d;
+  border-radius: 14px;
+  margin-bottom: 10px;
+
+}
+
+.flex-container {
+  display: flex;
+  background-color: #f1f1f1;
+}
+
+
+.main {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      padding: 1px;
+      margin-right: 10px;
+      margin-bottom: 30px;
+}
+
+.section {
+  flex: 1;
+  margin: 0 10px;
+  padding: 10px;
+  height: 100%;
+  border: 3px outset #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section img {
+  float: left;
+  justify-content: center;
+  margin: 0;
+  margin-top: 25px;
+}
+
+.beginner:hover {
+  border: 3px inset #ccc;
+  background-color: #DFBB9D;
+  transition: 0.3s;
+}
+
+.beginner a {
+  color: black;
+  text-decoration: none;
+}
+
+.beginner {
+  background-color: var(--fourth);
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+
+.beginner h {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.intermediate {
+  background-color: #9DD6DF;
+  padding-bottom: 30px;
+}
+
+.intermediate:hover {
+  border: 3px inset #ccc;
+  background-color: #66c4d3;
+  transition: 0.3s;
+}
+
+.intermediate h {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: center;
+  margin-left: 5px;
+  padding-top: 10px;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.intermediate img {
+  margin-left: 10px;
+}
+
+.intermediate a {
+  color: black;
+  text-decoration: none;
+}
+
+.advanced {
+  background-color: #8E7AB5;
+  padding-bottom: 30px;
+}
+
+.advanced:hover {
+  border: 3px inset #ccc;
+  background-color: #7b61af;
+  transition: 0.3s;
+}
+
+.advanced h {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.advanced a {
+  color: black;
+  text-decoration: none;
+}
+
+.advanced {
+  border: #E493B3 outset;
+}
+
+.description {
+  justify-content: center;
+  align-items: center;
+  display: flex; 
+  padding-right: 15rem;
+}
+

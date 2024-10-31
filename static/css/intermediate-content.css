@@ -1,0 +1,575 @@
+@keyframes fadeInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;} 
+  } 
+  
+  
+  
+  /* Center the loader */
+  #loader {
+    position: fixed;
+    left: 100%;
+    top: 100%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    margin-left: 38rem;
+    margin-top: 12rem;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid var(--fourth);
+    border-right: 16px solid #9DD6DF;
+    border-bottom: 16px solid #8E7AB5;
+    border-left: 16px solid #5EB090;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #main-body {
+    display: none;
+    text-align: center;
+  }
+  
+  :root{
+    --first-color: #b5ebf5;
+    --second-color: #000000;
+    --third-color: #e9e9e9;
+    --fourth-color: #ffffff;
+}
+
+body {
+    background-color: #f8efea;
+    --maincolor: #8CB9BD;
+    --secondary: #FEFBF6;
+    --tertiary: #ECB159;
+    --fourth: #B67352;
+    max-height: 100%;
+    position: fixed;
+    animation: fadeInUp ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-name {
+    margin-left: 10px; /* Adjust margin as needed */
+    margin-right: 70px;
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bold;
+    font-family: 'quicksand', sans-serif;
+  }
+  
+  .logo-text {
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .logo-text-blue {
+    color: #1B548D; /* Blue color for "Logo" */
+  }
+  
+  .logo-text-green {
+    color: #5EB090; /* Green color for "Name" */
+  }
+  
+  
+  
+  nav {
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(120, 126, 133, 0.2) 0px 8px 24px;
+  padding-bottom: 0.3em;
+  padding-top: 0.3em;
+  width: 100rem;
+  }
+  
+  nav ul {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-top: 0px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  }
+  
+  nav ul li {
+  display: inline-block;
+  }
+  
+  nav ul li a {
+  display: block;
+  padding: 10px;
+  padding-top: 14.5px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0 10px;
+  }
+  
+  nav ul li a,
+  nav ul li a:after,
+  nav ul li a:before {
+  transition: all .3s;
+  }
+  
+  nav ul li a:hover {
+  color: #555;
+  }
+  
+  nav.stroke ul li a,
+  nav.fill ul li a {
+  position: relative;
+  }
+  
+  nav.stroke ul li a:after,
+  nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: rgb(255, 255, 255);
+  height: 1px;
+  }
+  
+  nav.fill ul li a {
+  transition: all 2s;
+  }
+  
+  nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+  }
+  
+  nav.fill ul li a:hover {
+  color: rgb(0, 0, 0);
+  z-index: 1;
+  }
+  
+  nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 0.1s forwards;
+  -webkit-animation: fill 0.1s forwards;
+  -moz-animation: fill 0.1s forwards;
+  opacity: 1;
+  }
+  
+  .fill img {
+  width: 50px;
+  image-rendering: -moz-crisp-edges;
+  /* Firefox */
+  image-rendering: -o-crisp-edges;
+  /* Opera */
+  image-rendering: -webkit-optimize-contrast;
+  /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  text-align: center;
+  }
+  
+  nav a:hover {
+  background-color: #ddd;
+  color: black;
+  }
+  
+  .dropdown {
+  float: left;
+  overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  padding: 14px 20px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  margin-top: 3px;
+  }
+
+  .dropdown:hover {
+    background-color: #ddd;
+    color: black;
+    }
+  
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  z-index: 1;
+  }
+  
+  .dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+  }
+  
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  
+  /*-----------------------------END OF NAV BAR------------------------------------*/
+  
+  .logo {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+   /*Hide Scrollbar*/
+  
+   body::-webkit-scrollbar {
+    width: 0em;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #000; /* You can set the color you want */
+    outline: 1px solid slategrey;
+  }
+  
+  body {
+      overflow-y: auto; /* Hide scrollbar for the container */
+  }
+  
+    /*End of Hide Scrollbar*/
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-name {
+    margin-left: 10px; /* Adjust margin as needed */
+    margin-right: 70px;
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: bold;
+    font-family: 'quicksand', sans-serif;
+  }
+  
+  .logo-text {
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .logo-text-blue {
+    color: #1B548D; /* Blue color for "Logo" */
+  }
+  
+  .logo-text-green {
+    color: #5EB090; /* Green color for "Name" */
+  }
+  
+  .content-main {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    display: flex;
+  }
+  
+  .container-secondary {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding: 1;
+    overflow: hidden;
+  }
+  
+  .container-secondary img {
+    margin-left: 300px;
+    margin-right: 5px;
+  }
+  
+  
+  .content {
+    width: 100%;
+    height: 100%;
+    overflow: y 100px; /* Enable vertical scrollbar for the content */
+    padding-right: 10px; /* Adjust for the scrollbar width */
+    box-sizing: content-box;
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    width: 0em;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: #000; /* You can set the color you want */
+    outline: 1px solid slategrey;
+  }
+  
+  .scroll-container {
+    width: 55vw;
+      height: 88vh;
+      overflow-y: auto; /* Hide scrollbar for the container */
+  }
+
+  #label-nav {
+    width: 115px;
+    position: fixed;
+    top: 0;
+    left: 70rem
+  }
+  
+
+/*----------------------------- END OF LOGO------------------------------------*/
+
+body, h1, h2, p {
+margin: 0;
+padding: 0;
+}
+
+
+body {
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+line-height: 1.6;
+}
+
+header {
+background-color: #b5ebf5;
+color: #fff;
+padding: 20px;
+text-align: center;
+}
+
+main {
+padding: 20px;
+}
+
+.lesson {
+margin-bottom: 30px;
+margin-left: 50px;
+font-size: 25px; 
+}
+
+h2 {
+margin-bottom: 10px;
+margin-left: 50px;
+font-size: 25px; 
+}
+
+h1 {
+  margin-bottom: 0px;
+  margin-left: 50px;
+  font-size: 58px; 
+  }
+
+.main-content {
+background-color: #b5ebf5;
+padding-top: 30px;
+padding-bottom: 250px;
+width: 150%;
+}
+
+.main-content p {
+  position: fixed;
+  width: 45%;
+}
+
+/*---------------------------------------END OF BODY-----------------------------------*/
+
+.box-container{
+display: flex;
+text-align: center;
+padding: 20px 40px;
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.box{
+border: 3px inset #fc6c85;
+margin-top: 10px;
+margin-right: 20px;
+margin-left: 20px;
+background-color: #ffedec;
+padding: 1rem;
+padding-bottom: 0;
+opacity: .9;
+}
+
+.box-container .box img{
+margin-left: auto;  
+margin-right: auto;  
+padding: .1rem;
+background-color: #ffedec;
+transition: transform .9s;
+}
+
+
+.box-container .box:hover{
+transform: scale(1.2);
+background-color: #fc6c85;
+transition: 1s;
+}
+
+.box-container .box h3{
+font-size: 1.5rem;
+color: #fc6c90;
+font-weight: 200;
+margin: 1rem;
+font-family: sans-serif;
+
+}
+
+.solid-container
+{
+ background-color: #b5ebf5;
+ opacity: 0.9;
+ 
+}   
+
+#image-container video {
+  position: fixed;
+  top: 8.6rem;
+  right: 18.6rem;
+  object-fit: cover;
+  object-position: 40% 90%;
+  }
+  
+  
+  
+  #image-container {
+      position: fixed;
+      border: 10px solid var(--first-color);
+      width: 500px;
+      height: 400px;
+      top: 8rem;
+      right: 18rem; 
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+#image-container video::-webkit-media-controls-panel {
+    background-image: none !important;
+    filter: brightness(0.4);
+}
+
+#image-container video::-webkit-media-controls-volume-slider {
+  display:none;
+}
+
+#image-container video::-webkit-media-controls-mute-button {
+  display:none;
+}
+
+
+/*------------------------END OF BOX CONTAINER----------------*/
+
+.button {
+border-radius: 4px;
+background-color: yellow;
+border: none;
+color: #000000;
+text-align: center;
+font-size: 15px;
+padding: 10px;
+width: 100px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+border-radius: 18px;
+margin-left: 50px;
+position: fixed;
+top: 90%;
+left: 1%;
+}
+
+.button span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.button span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.button:hover span {
+padding-right: 25px;
+}
+
+.button:hover span:after {
+opacity: 1;
+right: 0;
+}
